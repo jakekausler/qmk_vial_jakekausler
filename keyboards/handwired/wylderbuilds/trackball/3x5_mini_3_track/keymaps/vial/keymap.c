@@ -39,89 +39,89 @@ enum custom_keycodes {
     // DRAG_SLOW,
     // DRAG_NAV,
 
-    // Base Home Row Mods
-    TD_ALMP, // R
-    TD_ALMR, // S
-    TD_ALMM, // N
-    TD_ALMI, // D
-    TD_ARMI, // A
-    TD_ARMM, // E
-    TD_ARMR, // I
-    TD_ARMP, // H
-    // Symbol Home Row Mods
-    TD_SLMP, // <
-    TD_SLMR, // {
-    TD_SLMM, // [
-    TD_SLMI, // (
-    TD_SRMI, // )
-    TD_SRMM, // ]
-    TD_SRMR, // }
-    TD_SRMP, // >
-    // Symbol Raised Home Row Mods
-    TD_TLMP, // $
-    TD_TLMR, // ?
-    TD_TLMM, // &
-    TD_TLMI, // :
-    TD_TRMI, // ;
-    TD_TRMM, // |
-    TD_TRMR, // !
-    TD_TRMP, // /
-    // Number Home Row Mods
-    TD_NLMP, // ,
-    TD_NLMR, // -
-    TD_NLMM, // +
-    TD_NLMI, // =
-    TD_NRMI, // 4
-    TD_NRMM, // 5
-    TD_NRMR, // 6
-    TD_NRMP, // .
-    // Navigation Home Row Mods
-    TD_VLMP, // _______
-    TD_VLMR, // _______
-    TD_VLMM, // _______
-    TD_VLMI, // _______
-    // Navigation VIM Home Row Mods
-    TD_ILMP, // _______
-    TD_ILMR, // _______
-    TD_ILMM, // _______
-    TD_ILMI, // _______
-    // Navigation Raised Home Row Mods
-    TD_WLMP, // _______
-    TD_WLMR, // _______
-    TD_WLMM, // _______
-    TD_WLMI, // _______
-    // Navigation Raised VIM Home Row Mods
-    TD_JLMP, // _______
-    TD_JLMR, // _______
-    TD_JLMM, // _______
-    TD_JLMI, // _______
-    // Function Home Row Mods
-    TD_FLMP, // Redo
-    TD_FLMR, // Paste
-    TD_FLMM, // Cut
-    TD_FLMI, // Copy
-    TD_FRMI, // F4
-    TD_FRMM, // F5
-    TD_FRMR, // F6
-    TD_FRMP, // F11
-    // Function Raised Home Row Mods
-    TD_GLMP, // F20
-    TD_GLMR, // F19
-    TD_GLMM, // F18
-    TD_GLMI, // F17
-    TD_GRMI, // F21
-    TD_GRMM, // F22
-    TD_GRMR, // F23
-    TD_GRMP, // F24
-    // Qwerty Home Row Mods
-    TD_QLMP, // KC_A
-    TD_QLMR, // KC_S
-    TD_QLMM, // KC_D
-    TD_QLMI, // KC_F
-    TD_QRMI, // KC_J
-    TD_QRMM, // KC_K
-    TD_QRMR, // KC_L
-    TD_QRMP, // KC_SCLN
+    // // Base Home Row Mods
+    // TD_ALMP, // R
+    // TD_ALMR, // S
+    // TD_ALMM, // N
+    // TD_ALMI, // D
+    // TD_ARMI, // A
+    // TD_ARMM, // E
+    // TD_ARMR, // I
+    // TD_ARMP, // H
+    // // Symbol Home Row Mods
+    // TD_SLMP, // <
+    // TD_SLMR, // {
+    // TD_SLMM, // [
+    // TD_SLMI, // (
+    // TD_SRMI, // )
+    // TD_SRMM, // ]
+    // TD_SRMR, // }
+    // TD_SRMP, // >
+    // // Symbol Raised Home Row Mods
+    // TD_TLMP, // $
+    // TD_TLMR, // ?
+    // TD_TLMM, // &
+    // TD_TLMI, // :
+    // TD_TRMI, // ;
+    // TD_TRMM, // |
+    // TD_TRMR, // !
+    // TD_TRMP, // /
+    // // Number Home Row Mods
+    // TD_NLMP, // ,
+    // TD_NLMR, // -
+    // TD_NLMM, // +
+    // TD_NLMI, // =
+    // TD_NRMI, // 4
+    // TD_NRMM, // 5
+    // TD_NRMR, // 6
+    // TD_NRMP, // .
+    // // Navigation Home Row Mods
+    // TD_VLMP, // _______
+    // TD_VLMR, // _______
+    // TD_VLMM, // _______
+    // TD_VLMI, // _______
+    // // Navigation VIM Home Row Mods
+    // TD_ILMP, // _______
+    // TD_ILMR, // _______
+    // TD_ILMM, // _______
+    // TD_ILMI, // _______
+    // // Navigation Raised Home Row Mods
+    // TD_WLMP, // _______
+    // TD_WLMR, // _______
+    // TD_WLMM, // _______
+    // TD_WLMI, // _______
+    // // Navigation Raised VIM Home Row Mods
+    // TD_JLMP, // _______
+    // TD_JLMR, // _______
+    // TD_JLMM, // _______
+    // TD_JLMI, // _______
+    // // Function Home Row Mods
+    // TD_FLMP, // Redo
+    // TD_FLMR, // Paste
+    // TD_FLMM, // Cut
+    // TD_FLMI, // Copy
+    // TD_FRMI, // F4
+    // TD_FRMM, // F5
+    // TD_FRMR, // F6
+    // TD_FRMP, // F11
+    // // Function Raised Home Row Mods
+    // TD_GLMP, // F20
+    // TD_GLMR, // F19
+    // TD_GLMM, // F18
+    // TD_GLMI, // F17
+    // TD_GRMI, // F21
+    // TD_GRMM, // F22
+    // TD_GRMR, // F23
+    // TD_GRMP, // F24
+    // // Qwerty Home Row Mods
+    // TD_QLMP, // KC_A
+    // TD_QLMR, // KC_S
+    // TD_QLMM, // KC_D
+    // TD_QLMI, // KC_F
+    // TD_QRMI, // KC_J
+    // TD_QRMM, // KC_K
+    // TD_QRMR, // KC_L
+    // TD_QRMP, // KC_SCLN
 };
 
 // Alp
@@ -135,16 +135,16 @@ enum custom_keycodes {
 #define Artm KC_W
 #define Artr KC_V
 #define Artp KC_NO
-#define Almp TD_ALMP
-#define Almr TD_ALMR
-#define Almm TD_ALMM
-#define Almi TD_ALMI
+#define Almp KC_R
+#define Almr KC_S
+#define Almm KC_N
+#define Almi KC_D
 #define Almn KC_COMM
 #define Armn KC_DOT
-#define Armi TD_ARMI
-#define Armm TD_ARMM
-#define Armr TD_ARMR
-#define Armp TD_ARMP
+#define Armi KC_A
+#define Armm KC_E
+#define Armr KC_I
+#define Armp KC_H
 #define Albp KC_QUOT
 #define Albr KC_F
 #define Albm KC_L
@@ -225,16 +225,16 @@ enum custom_keycodes {
 #define Srtm _______
 #define Srtr _______
 #define Srtp _______
-#define Slmp TD_SLMP
-#define Slmr TD_SLMR
-#define Slmm TD_SLMM
-#define Slmi TD_SLMI
+#define Slmp KC_LT
+#define Slmr KC_LCBR
+#define Slmm KC_LBRC
+#define Slmi KC_LPRN
 #define Slmn _______
 #define Srmn _______
-#define Srmi TD_SRMI
-#define Srmm TD_SRMM
-#define Srmr TD_SRMR
-#define Srmp TD_SRMP
+#define Srmi KC_RPRN
+#define Srmm KC_RBRC
+#define Srmr KC_RPAR
+#define Srmp KC_GT
 #define Slbp _______
 #define Slbr KC_AT
 #define Slbm KC_BSLS
@@ -270,16 +270,16 @@ enum custom_keycodes {
 #define Trtm _______
 #define Trtr _______
 #define Trtp _______
-#define Tlmp TD_TLMP
-#define Tlmr TD_TLMR
-#define Tlmm TD_TLMM
-#define Tlmi TD_TLMI
+#define Tlmp KC_DLR
+#define Tlmr KC_QUES
+#define Tlmm KC_AMPR
+#define Tlmi KC_COLN
 #define Tlmn _______
 #define Trmn _______
-#define Trmi TD_TRMI
-#define Trmm TD_TRMM
-#define Trmr TD_TRMR
-#define Trmp TD_TRMP
+#define Trmi KC_SCLN
+#define Trmm KC_PIPE
+#define Trmr KC_EXLM
+#define Trmp KC_SLSH
 #define Tlbp _______
 #define Tlbr _______
 #define Tlbm _______
@@ -315,16 +315,16 @@ enum custom_keycodes {
 #define Nrtm KC_8
 #define Nrtr KC_9
 #define Nrtp _______
-#define Nlmp TD_NLMP
-#define Nlmr TD_NLMR
-#define Nlmm TD_NLMM
-#define Nlmi TD_NLMI
+#define Nlmp KC_COMM
+#define Nlmr KC_MINS
+#define Nlmm KC_PLUS
+#define Nlmi KC_EQL
 #define Nlmn _______
 #define Nrmn _______
-#define Nrmi TD_NRMI
-#define Nrmm TD_NRMM
-#define Nrmr TD_NRMR
-#define Nrmp TD_NRMP
+#define Nrmi KC_4
+#define Nrmm KC_5
+#define Nrmr KC_6
+#define Nrmp KC_DOT
 #define Nlbp _______
 #define Nlbr KC_CIRC
 #define Nlbm KC_ASTR
@@ -540,16 +540,16 @@ enum custom_keycodes {
 #define Frtm KC_F8
 #define Frtr KC_F9
 #define Frtp KC_F12
-#define Flmp TD_FLMP
-#define Flmr TD_FLMR
-#define Flmm TD_FLMM
-#define Flmi TD_FLMI
+#define Flmp KC_F16
+#define Flmr KC_F15
+#define Flmm KC_F14
+#define Flmi KC_F13
 #define Flmn _______
 #define Frmn _______
-#define Frmi TD_FRMI
-#define Frmm TD_FRMM
-#define Frmr TD_FRMR
-#define Frmp TD_FRMP
+#define Frmi KC_F4
+#define Frmm KC_F5
+#define Frmr KC_F6
+#define Frmp KC_F11
 #define Flbp KC_F16
 #define Flbr KC_F15
 #define Flbm KC_F14
@@ -585,16 +585,16 @@ enum custom_keycodes {
 #define Grtm _______
 #define Grtr _______
 #define Grtp _______
-#define Glmp TD_GLMP
-#define Glmr TD_GLMR
-#define Glmm TD_GLMM
-#define Glmi TD_GLMI
+#define Glmp KC_F20
+#define Glmr KC_F19
+#define Glmm KC_F18
+#define Glmi KC_F17
 #define Glmn _______
 #define Grmn _______
-#define Grmi TD_GRMI
-#define Grmm TD_GRMM
-#define Grmr TD_GRMR
-#define Grmp TD_GRMP
+#define Grmi KC_F21
+#define Grmm KC_F22
+#define Grmr KC_F23
+#define Grmp KC_F24
 #define Glbp _______
 #define Glbr _______
 #define Glbm _______
@@ -630,16 +630,16 @@ enum custom_keycodes {
 #define Qrtm KC_I
 #define Qrtr KC_O
 #define Qrtp KC_P
-#define Qlmp TD_QLMP
-#define Qlmr TD_QLMR
-#define Qlmm TD_QLMM
-#define Qlmi TD_QLMI
+#define Qlmp KC_A
+#define Qlmr KC_S
+#define Qlmm KC_D
+#define Qlmi KC_F
 #define Qlmn KC_G
 #define Qrmn KC_H
-#define Qrmi TD_QRMI
-#define Qrmm TD_QRMM
-#define Qrmr TD_QRMR
-#define Qrmp TD_QRMP
+#define Qrmi KC_J
+#define Qrmm KC_K
+#define Qrmr KC_L
+#define Qrmp KC_SCLN
 #define Qlbp KC_Z
 #define Qlbr KC_X
 #define Qlbm KC_C
@@ -1234,11 +1234,16 @@ static void render_wylderbuilds(void) {
 static char layer_names[7][8] = {
             "  ALP\n",
             "  MOU\n",
-            "  NUM\n",
             "  SYM\n",
-            "  KOM\n",
+						"  SYR\n",
+            "  NUM\n",
+            "  NAV\n",
+						"  NAI\n",
+						"  NAR\n",
+						"  NAS\n",
             "  FUN\n",
-            "  NAV\n"
+						"  FUR\n",
+						"  QWE\n"
             };
 
 bool oled_task_user(void) {
@@ -1287,11 +1292,16 @@ bool oled_task_user(void) {
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 	[_ALP] = { ENCODER_CCW_CW(Alec, AleC), ENCODER_CCW_CW(Arec, AreC) },
 	[_MOU] = { ENCODER_CCW_CW(Mlec, MleC), ENCODER_CCW_CW(Mrec, MreC) },
-	[_NUM] = { ENCODER_CCW_CW(Nlec, NleC), ENCODER_CCW_CW(Nrec, NreC) },
 	[_SYM] = { ENCODER_CCW_CW(Slec, SleC), ENCODER_CCW_CW(Srec, SreC) },
-	[_KOM] = { ENCODER_CCW_CW(Klec, KleC), ENCODER_CCW_CW(Krec, KreC) },
-	[_FUN] = { ENCODER_CCW_CW(Flec, FleC), ENCODER_CCW_CW(Frec, FreC) },
-	[_NAV] = { ENCODER_CCW_CW(Vlec, VleC), ENCODER_CCW_CW(Vrec, VreC) },
+	[_SYR] = { ENCODER_CCW_CW(Slec, SleC), ENCODER_CCW_CW(Srec, SreC) },
+	[_NUM] = { ENCODER_CCW_CW(Nlec, NleC), ENCODER_CCW_CW(Nrec, NreC) },
+	[_NAV] = { ENCODER_CCW_CW(Klec, KleC), ENCODER_CCW_CW(Krec, KreC) },
+	[_NAI] = { ENCODER_CCW_CW(Flec, FleC), ENCODER_CCW_CW(Frec, FreC) },
+	[_NAR] = { ENCODER_CCW_CW(Vlec, VleC), ENCODER_CCW_CW(Vrec, VreC) },
+	[_NAS] = { ENCODER_CCW_CW(Vlec, VleC), ENCODER_CCW_CW(Vrec, VreC) },
+	[_FUN] = { ENCODER_CCW_CW(Vlec, VleC), ENCODER_CCW_CW(Vrec, VreC) },
+	[_FUR] = { ENCODER_CCW_CW(Vlec, VleC), ENCODER_CCW_CW(Vrec, VreC) },
+	[_QWE] = { ENCODER_CCW_CW(Vlec, VleC), ENCODER_CCW_CW(Vrec, VreC) },
 };
 #endif
 
