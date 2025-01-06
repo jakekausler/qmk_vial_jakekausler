@@ -4,32 +4,22 @@
 #include "print.h"
 
 // LAYERS
-#define _ALP 0 // Base
-#define _MOU 1 // Mouse
-#define _SYM 2 // Symbol
-#define _SYR 3 // Symbol Raised
-#define _NUM 4 // Number
-#define _NAV 5 // Navigation
-#define _NAI 6 // Navigation VIM
-#define _NAR 7 // Navigation Raised
-#define _NAS 8 // Navigation Raised VIM
-#define _FUN 9 // Function
-#define _FUR 10 // Function Raised
-#define _QWE 11 // Qwerty
+#define _ALP 0
+#define _MOU 1
+#define _NUM 2
+#define _SYM 3
+#define _KOM 4
+#define _FUN 5
+#define _NAV 6
 
-// // LAYER CODES
-// #define ALP MO(_ALP)
-// #define MOU MO(_MOU)
-// #define SYM MO(_SYM)
-// #define SYR MO(_SYR)
-// #define NUM MO(_NUM)
-// #define NAV MO(_NAV)
-// #define NAI MO(_NAI)
-// #define NAR MO(_NAR)
-// #define NAS MO(_NAS)
-// #define FUN MO(_FUN)
-// #define FUR MO(_FUR)
-// #define QWE MO(_QWE)
+// LAYER CODES
+#define ALP MO(_ALP)
+#define MOU MO(_MOU)
+#define NUM MO(_NUM)
+#define SYM MO(_SYM)
+#define KOM MO(_KOM)
+#define FUN MO(_FUN)
+#define NAV MO(_NAV)
 
 enum custom_keycodes {
     WYLD_AUTO_MS_TOG = SAFE_RANGE,
@@ -38,131 +28,92 @@ enum custom_keycodes {
     // DRAG_SCROLL,
     // DRAG_SLOW,
     // DRAG_NAV,
-
-    // Base Home Row Mods
-    TD_ALMP, // R
-    TD_ALMR, // S
-    TD_ALMM, // N
-    TD_ALMI, // D
-    TD_ARMI, // A
-    TD_ARMM, // E
-    TD_ARMR, // I
-    TD_ARMP, // H
-    // Symbol Home Row Mods
-    TD_SLMP, // <
-    TD_SLMR, // {
-    TD_SLMM, // [
-    TD_SLMI, // (
-    TD_SRMI, // )
-    TD_SRMM, // ]
-    TD_SRMR, // }
-    TD_SRMP, // >
-    // Symbol Raised Home Row Mods
-    TD_TLMP, // $
-    TD_TLMR, // ?
-    TD_TLMM, // &
-    TD_TLMI, // :
-    TD_TRMI, // ;
-    TD_TRMM, // |
-    TD_TRMR, // !
-    TD_TRMP, // /
-    // Number Home Row Mods
-    TD_NLMP, // ,
-    TD_NLMR, // -
-    TD_NLMM, // +
-    TD_NLMI, // =
-    TD_NRMI, // 4
-    TD_NRMM, // 5
-    TD_NRMR, // 6
-    TD_NRMP, // .
-    // Navigation Home Row Mods
-    TD_VLMP, // _______
-    TD_VLMR, // _______
-    TD_VLMM, // _______
-    TD_VLMI, // _______
-    // Navigation VIM Home Row Mods
-    TD_ILMP, // _______
-    TD_ILMR, // _______
-    TD_ILMM, // _______
-    TD_ILMI, // _______
-    // Navigation Raised Home Row Mods
-    TD_WLMP, // _______
-    TD_WLMR, // _______
-    TD_WLMM, // _______
-    TD_WLMI, // _______
-    // Navigation Raised VIM Home Row Mods
-    TD_JLMP, // _______
-    TD_JLMR, // _______
-    TD_JLMM, // _______
-    TD_JLMI, // _______
-    // Function Home Row Mods
-    TD_FLMP, // Redo
-    TD_FLMR, // Paste
-    TD_FLMM, // Cut
-    TD_FLMI, // Copy
-    TD_FRMI, // F4
-    TD_FRMM, // F5
-    TD_FRMR, // F6
-    TD_FRMP, // F11
-    // Function Raised Home Row Mods
-    TD_GLMP, // F20
-    TD_GLMR, // F19
-    TD_GLMM, // F18
-    TD_GLMI, // F17
-    TD_GRMI, // F21
-    TD_GRMM, // F22
-    TD_GRMR, // F23
-    TD_GRMP, // F24
-    // Qwerty Home Row Mods
-    TD_QLMP, // KC_A
-    TD_QLMR, // KC_S
-    TD_QLMM, // KC_D
-    TD_QLMI, // KC_F
-    TD_QRMI, // KC_J
-    TD_QRMM, // KC_K
-    TD_QRMR, // KC_L
-    TD_QRMP, // KC_SCLN
 };
 
+// enum tap_dance_enums {
+//     TD_ALBP,
+//     TD_ALBR,
+//     TD_ALBM,
+//     TD_ALBI,
+//     TD_ARBI,
+//     TD_ARBM,
+//     TD_ARBR,
+//     TD_ARBP,
+//     TD_NLBP,
+//     TD_NLBR,
+//     TD_NLBM,
+//     TD_NLBI,
+//     TD_NRBI,
+//     TD_NRBM,
+//     TD_NRBR,
+//     TD_NRBP,
+//     TD_SLBP,
+//     TD_SLBR,
+//     TD_SLBM,
+//     TD_SLBI,
+//     TD_SRBI,
+//     TD_SRBM,
+//     TD_SRBR,
+//     TD_SRBP,
+//     TD_FLBP,
+//     TD_FLBR,
+//     TD_FLBM,
+//     TD_FLBI,
+//     TD_FRBI,
+//     TD_FRBM,
+//     TD_FRBR,
+//     TD_FRBP,
+//     TD_VLBP,
+//     TD_VLBR,
+//     TD_VLBM,
+//     TD_VLBI,
+//     TD_VRBI,
+//     TD_VRBM,
+//     TD_VRBR,
+//     TD_VRBP,
+// };
+
 // Alp
-#define Altp KC_NO
+#define Altp KC_QUOT
 #define Altr KC_G
 #define Altm KC_M
 #define Alti KC_P
-#define Altn KC_NO
-#define Artn KC_NO
+#define Altn KC_PIPE
+#define Artn KC_EXLM
 #define Arti KC_B
 #define Artm KC_W
 #define Artr KC_V
-#define Artp KC_NO
-#define Almp TD_ALMP
-#define Almr TD_ALMR
-#define Almm TD_ALMM
-#define Almi TD_ALMI
+#define Artp KC_DQT
+#define Almp KC_R
+#define Almr KC_S
+#define Almm KC_N
+#define Almi KC_D
 #define Almn KC_COMM
 #define Armn KC_DOT
-#define Armi TD_ARMI
-#define Armm TD_ARMM
-#define Armr TD_ARMR
-#define Armp TD_ARMP
-#define Albp KC_QUOT
-#define Albr KC_F
-#define Albm KC_L
-#define Albi KC_C
-#define Albn KC_NO
-#define Arbn KC_NO
-#define Arbi KC_U
-#define Arbm KC_O
-#define Arbr KC_Y
-#define Arbp KC_DQT
-#define Alt0 LT(_NAV, CAPS_WORD)
+#define Armi KC_A
+#define Armm KC_E
+#define Armr KC_I
+#define Armp KC_H
+#define Albp TD(0)
+#define Albr TD(1)
+#define Albm TD(2)
+#define Albi TD(3)
+#define Albn KC_AMPR
+#define Arbn KC_QUES
+#define Arbi TD(4)
+#define Arbm TD(5)
+#define Arbr TD(6)
+#define Arbp TD(7)
+#define Alt0 LT(_FUN, KC_ENT)
 #define Alt1 LT(_NUM, KC_T)
 #define Alt2 SNIPING_MODE_TOGGLE
-#define Art0 LT(_FUN, KC_BSPC)
+// #define Alt2 SNP_TOG
+#define Art0 LT(_KOM, KC_BSPC)
 #define Art1 LT(_SYM, KC_SPC)
-#define Art2 LT(_NAV, MAGIC)
+#define Art2 LT(_NAV, KC_DEL)
 #define Alt3 DRAGSCROLL_MODE_TOGGLE
-#define Alt4 QWERTY_MODE_TOGGLE
+// #define Alt3 DRG_TOG
+#define Alt4 KC_NO
 #define Alec S(A(KC_ESC))
 #define AleP G(KC_C)
 #define AleC A(KC_ESC)
@@ -214,456 +165,231 @@ enum custom_keycodes {
 #define Mrec _______
 #define MreP _______
 #define MreC _______
+// Num
+#define Nltp KC_AT
+#define Nltr KC_HASH
+#define Nltm KC_AMPR
+#define Nlti KC_PIPE
+#define Nltn KC_CIRC
+#define Nrtn KC_DLR
+#define Nrti KC_7
+#define Nrtm KC_8
+#define Nrtr KC_9
+#define Nrtp KC_EQUAL
+#define Nlmp WYLD_AUTO_MS_TOG
+#define Nlmr KC_BTN3
+#define Nlmm KC_BTN1
+#define Nlmi KC_BTN2
+#define Nlmn KC_DLR
+#define Nrmn KC_PLUS
+#define Nrmi KC_4
+#define Nrmm KC_5
+#define Nrmr KC_6
+#define Nrmp KC_ASTR
+#define Nlbp MT(MOD_LGUI, KC_SCLN)
+#define Nlbr TD(8)
+#define Nlbm TD(9)
+#define Nlbi TD(10)
+#define Nlbn KC_PERC
+#define Nrbn KC_MINUS
+#define Nrbi MT(MOD_LCTL, KC_1)
+#define Nrbm MT(MOD_LSFT, KC_2)
+#define Nrbr MT(MOD_LALT, KC_3)
+#define Nrbp MT(MOD_LGUI, KC_SLSH)
+#define Nlt0 _______
+#define Nlt1 _______
+#define Nlt2 _______
+#define Nrt0 LT(_KOM, KC_BSPC)
+#define Nrt1 LT(_SYM, KC_0)
+#define Nrt2 LT(_NAV, KC_DOT)
+#define Nlt3 _______
+#define Nlt4 _______
+#define Nlec _______
+#define NleP _______
+#define NleC _______
+#define Nrec C(KC_EQUAL)
+#define NreP _______
+#define NreC C(KC_MINUS)
 // Sym
-#define Sltp _______
-#define Sltr _______
-#define Sltm _______
-#define Slti _______
-#define Sltn _______
-#define Srtn _______
-#define Srti _______
-#define Srtm _______
-#define Srtr _______
-#define Srtp _______
-#define Slmp TD_SLMP
-#define Slmr TD_SLMR
-#define Slmm TD_SLMM
-#define Slmi TD_SLMI
-#define Slmn _______
-#define Srmn _______
-#define Srmi TD_SRMI
-#define Srmm TD_SRMM
-#define Srmr TD_SRMR
-#define Srmp TD_SRMP
-#define Slbp _______
-#define Slbr KC_AT
-#define Slbm KC_BSLS
-#define Slbi KC_SLSH
-#define Slbn _______
-#define Srbn _______
-#define Srbi KC_GRV
-#define Srbm KC_TILD
-#define Srbr KC_HASH
-#define Srbp _______
-#define Slt0 _______
-#define Slt1 _______
-#define Slt2 _______
-#define Srt0 LT(_NAR, KC_NO)
-#define Srt1 LT(SYR, KC_UNDS)
+#define Sltp KC_AT
+#define Sltr KC_HASH
+#define Sltm KC_AMPR
+#define Slti KC_PIPE
+#define Sltn KC_CIRC
+#define Srtn KC_DLR
+#define Srti KC_7
+#define Srtm KC_8
+#define Srtr KC_9
+#define Srtp KC_EQUAL
+#define Slmp KC_EXLM
+#define Slmr KC_LT
+#define Slmm KC_EQUAL
+#define Slmi KC_GT
+#define Slmn KC_DLR
+#define Srmn KC_PLUS
+#define Srmi KC_4
+#define Srmm KC_5
+#define Srmr KC_6
+#define Srmp KC_ASTR
+#define Slbp MT(MOD_LGUI, KC_SCLN)
+#define Slbr TD(8)
+#define Slbm TD(9)
+#define Slbi TD(10)
+#define Slbn KC_PERC
+#define Srbn KC_MINUS
+#define Srbi MT(MOD_LCTL, KC_1)
+#define Srbm MT(MOD_LSFT, KC_2)
+#define Srbr MT(MOD_LALT, KC_3)
+#define Srbp MT(MOD_LGUI, KC_SLSH)
+#define Slt0 LT(_FUN, KC_MINUS)
+#define Slt1 KC_UNDS
+#define Slt2 KC_SLSH
+#define Srt0 _______
+#define Srt1 _______
 #define Srt2 _______
-#define Slt3 _______
-#define Slt4 _______
+#define Slt3 KC_ESC
+#define Slt4 KC_BSLS
 #define Slec _______
 #define SleP _______
 #define SleC _______
 #define Srec _______
 #define SreP _______
 #define SreC _______
-// Sym Raised
-#define Tltp _______
-#define Tltr _______
-#define Tltm _______
-#define Tlti _______
-#define Tltn _______
-#define Trtn _______
-#define Trti _______
-#define Trtm _______
-#define Trtr _______
-#define Trtp _______
-#define Tlmp TD_TLMP
-#define Tlmr TD_TLMR
-#define Tlmm TD_TLMM
-#define Tlmi TD_TLMI
-#define Tlmn _______
-#define Trmn _______
-#define Trmi TD_TRMI
-#define Trmm TD_TRMM
-#define Trmr TD_TRMR
-#define Trmp TD_TRMP
-#define Tlbp _______
-#define Tlbr _______
-#define Tlbm _______
-#define Tlbi _______
-#define Tlbn _______
-#define Trbn _______
-#define Trbi _______
-#define Trbm _______
-#define Trbr _______
-#define Trbp _______
-#define Tlt0 _______
-#define Tlt1 _______
-#define Tlt2 _______
-#define Trt0 _______
-#define Trt1 _______
-#define Trt2 _______
-#define Tlt3 _______
-#define Tlt4 _______
-#define Tlec _______
-#define TleP _______
-#define TleC _______
-#define Trec _______
-#define TreP _______
-#define TreC _______
-// Num
-#define Nltp _______
-#define Nltr _______
-#define Nltm _______
-#define Nlti _______
-#define Nltn _______
-#define Nrtn _______
-#define Nrti KC_7
-#define Nrtm KC_8
-#define Nrtr KC_9
-#define Nrtp _______
-#define Nlmp TD_NLMP
-#define Nlmr TD_NLMR
-#define Nlmm TD_NLMM
-#define Nlmi TD_NLMI
-#define Nlmn _______
-#define Nrmn _______
-#define Nrmi TD_NRMI
-#define Nrmm TD_NRMM
-#define Nrmr TD_NRMR
-#define Nrmp TD_NRMP
-#define Nlbp _______
-#define Nlbr KC_CIRC
-#define Nlbm KC_ASTR
-#define Nlbi KC_PERC
-#define Nlbn _______
-#define Nrbn _______
-#define Nrbi KC_1
-#define Nrbm KC_2
-#define Nrbr KC_3
-#define Nrbp _______
-#define Nlt0 _______
-#define Nlt1 _______
-#define Nlt2 _______
-#define Nrt0 LT(_FUR, KC_NO)
-#define Nrt1 LT(_SYR, KC_0)
-#define Nrt2 _______
-#define Nlt3 _______
-#define Nlt4 _______
-#define Nlec _______
-#define NleP _______
-#define NleC _______
-#define Nrec _______
-#define NreP _______
-#define NreC _______
-// Nav
-#define Vltp _______
-#define Vltr _______
-#define Vltm _______
-#define Vlti _______
-#define Vltn _______
-#define Vrtn _______
-#define Vrti WINDOW_LEFT
-#define Vrtm WINDOW_DOWN
-#define Vrtr WINDOW_UP
-#define Vrtp WINDOW_RIGHT
-#define Vlmp _______
-#define Vlmr _______
-#define Vlmm _______
-#define Vlmi _______
-#define Vlmn _______
-#define Vrmn _______
-#define Vrmi KC_LEFT
-#define Vrmm KC_DOWN
-#define Vrmr KC_UP
-#define Vrmp KC_RGHT
-#define Vlbp _______
-#define Vlbr _______
-#define Vlbm _______
-#define Vlbi _______
-#define Vlbn _______
-#define Vrbn _______
-#define Vrbi _______
-#define Vrbm TAB_PREV
-#define Vrbr TAB_NEXT
-#define Vrbp _______
-#define Vlt0 _______
-#define Vlt1 _______
-#define Vlt2 _______
-#define Vrt0 _______
-#define Vrt1 LT(_NAR, KC_NO)
-#define Vrt2 _______
-#define Vlt3 _______
-#define Vlt4 _______
-#define Vlec _______
-#define VleP QK_BOOT
-#define VleC _______
-#define Vrec _______
-#define VreP _______
-#define VreC _______
-// Nav VIM
-#define Iltp _______
-#define Iltr _______
-#define Iltm _______
-#define Ilti _______
-#define Iltn _______
-#define Irtn _______
-#define Irti WINDOW_LEFT
-#define Irtm WINDOW_DOWN
-#define Irtr WINDOW_UP
-#define Irtp WINDOW_RIGHT
-#define Ilmp _______
-#define Ilmr _______
-#define Ilmm _______
-#define Ilmi _______
-#define Ilmn _______
-#define Irmn _______
-#define Irmi KC_H
-#define Irmm KC_J
-#define Irmr KC_K
-#define Irmp KC_L
-#define Ilbp _______
-#define Ilbr _______
-#define Ilbm _______
-#define Ilbi _______
-#define Ilbn _______
-#define Irbn _______
-#define Irbi KC_B
-#define Irbm TAB_PREV
-#define Irbr TAB_NEXT
-#define Irbp KC_E
-#define Ilt0 _______
-#define Ilt1 _______
-#define Ilt2 _______
-#define Irt0 _______
-#define Irt1 _______
-#define Irt2 _______
-#define Ilt3 _______
-#define Ilt4 _______
-#define Ilec _______
-#define IleP QK_BOOT
-#define IleC _______
-#define Irec _______
-#define IreP _______
-#define IreC _______
-// Nav Raised
-#define Wltp _______
-#define Wltr _______
-#define Wltm _______
-#define Wlti _______
-#define Wltn _______
-#define Wrtn _______
-#define Wrti MOVE_WINDOW_LEFT
-#define Wrtm MOVE_WINDOW_DOWN
-#define Wrtr MOVE_WINDOW_UP
-#define Wrtp MOVE_WINDOW_RIGHT
-#define Wlmp _______
-#define Wlmr _______
-#define Wlmm _______
-#define Wlmi _______
-#define Wlmn _______
-#define Wrmn _______
-#define Wrmi KC_HOME
-#define Wrmm KC_PGDN
-#define Wrmr KC_PGUP
-#define Wrmp KC_END
-#define Wlbp _______
-#define Wlbr _______
-#define Wlbm _______
-#define Wlbi _______
-#define Wlbn _______
-#define Wrbn _______
-#define Wrbi ADJUST_WINDOW_LEFT
-#define Wrbm WINDOW_FORWARD
-#define Wrbr WINDOW_BACK
-#define Wrbp ADJUST_WINDOW_RIGHT
-#define Wlt0 _______
-#define Wlt1 _______
-#define Wlt2 _______
-#define Wrt0 _______
-#define Wrt1 _______
-#define Wrt2 _______
-#define Wlt3 _______
-#define Wlt4 _______
-#define Wlec _______
-#define WleP _______
-#define WleC _______
-#define Wrec _______
-#define WreP _______
-#define WreC _______
-// Nav VIM Raised
-#define Jltp _______
-#define Jltr _______
-#define Jltm _______
-#define Jlti _______
-#define Jltn _______
-#define Jrtn _______
-#define Jrti MOVE_WINDOW_LEFT
-#define Jrtm MOVE_WINDOW_DOWN
-#define Jrtr MOVE_WINDOW_UP
-#define Jrtp MOVE_WINDOW_RIGHT
-#define Jlmp _______
-#define Jlmr _______
-#define Jlmm _______
-#define Jlmi _______
-#define Jlmn _______
-#define Jrmn _______
-#define Jrmi VIM_0
-#define Jrmm C(KC_D)
-#define Jrmr C(KC_B)
-#define Jrmp DLR
-#define Jlbp _______
-#define Jlbr _______
-#define Jlbm _______
-#define Jlbi _______
-#define Jlbn _______
-#define Jrbn _______
-#define Jrbi ADJUST_WINDOW_LEFT
-#define Jrbm WINDOW_FORWARD
-#define Jrbr WINDOW_BACK
-#define Jrbp ADJUST_WINDOW_RIGHT
-#define Jlt0 _______
-#define Jlt1 _______
-#define Jlt2 _______
-#define Jrt0 _______
-#define Jrt1 _______
-#define Jrt2 _______
-#define Jlt3 _______
-#define Jlt4 _______
-#define Jlec _______
-#define JleP _______
-#define JleC _______
-#define Jrec _______
-#define JreP _______
-#define JreC _______
+// Kom
+#define Kltp G(KC_QUOT)
+#define Kltr G(KC_G)
+#define Kltm G(KC_M)
+#define Klti G(KC_P)
+#define Kltn _______
+#define Krtn _______
+#define Krti _______
+#define Krtm _______
+#define Krtr _______
+#define Krtp _______
+#define Klmp G(KC_R)
+#define Klmr G(KC_S)
+#define Klmm G(KC_N)
+#define Klmi G(KC_D)
+#define Klmn _______
+#define Krmn _______
+#define Krmi _______
+#define Krmm _______
+#define Krmr _______
+#define Krmp _______
+#define Klbp G(KC_SCLN)
+#define Klbr G(KC_F)
+#define Klbm G(KC_L)
+#define Klbi G(KC_C)
+#define Klbn _______
+#define Krbn _______
+#define Krbi _______
+#define Krbm _______
+#define Krbr _______
+#define Krbp _______
+#define Klt0 _______
+#define Klt1 _______
+#define Klt2 _______
+#define Krt0 _______
+#define Krt1 _______
+#define Krt2 _______
+#define Klt3 _______
+#define Klt4 _______
+#define Klec _______
+#define KleP _______
+#define KleC _______
+#define Krec _______
+#define KreP _______
+#define KreC _______
 // Fun
-#define Fltp MUTE
-#define Fltr VOL_UP
-#define Fltm VOL_DN
-#define Flti MIC_MUTE
-#define Fltn _______
-#define Frtn ______
+#define Fltp KC_F19
+#define Fltr KC_F20
+#define Fltm KC_F21
+#define Flti KC_F22
+#define Fltn KC_F23
+#define Frtn KC_F12
 #define Frti KC_F7
 #define Frtm KC_F8
 #define Frtr KC_F9
-#define Frtp KC_F12
-#define Flmp TD_FLMP
-#define Flmr TD_FLMR
-#define Flmm TD_FLMM
-#define Flmi TD_FLMI
-#define Flmn _______
-#define Frmn _______
-#define Frmi TD_FRMI
-#define Frmm TD_FRMM
-#define Frmr TD_FRMR
-#define Frmp TD_FRMP
-#define Flbp KC_F16
-#define Flbr KC_F15
-#define Flbm KC_F14
-#define Flbi KC_F13
-#define Flbn _______
-#define Frbn _______
-#define Frbi KC_F1
-#define Frbm KC_F2
-#define Frbr KC_F3
-#define Frbp KC_F4
+#define Frtp KC_F15
+#define Flmp KC_LEFT
+#define Flmr KC_DOWN
+#define Flmm KC_UP
+#define Flmi KC_RIGHT
+#define Flmn KC_F24
+#define Frmn KC_F11
+#define Frmi KC_F4
+#define Frmm KC_F5
+#define Frmr KC_F6
+#define Frmp KC_F14
+#define Flbp MT(MOD_LGUI, KC_HOME)
+#define Flbr MT(MOD_LALT, KC_PGDN)
+#define Flbm MT(MOD_LSFT, KC_PGUP)
+#define Flbi MT(MOD_LCTL, KC_END)
+#define Flbn KC_INS
+#define Frbn KC_F10
+#define Frbi MT(MOD_LCTL, KC_F1)
+#define Frbm MT(MOD_LSFT, KC_F2)
+#define Frbr MT(MOD_LALT, KC_F3)
+#define Frbp MT(MOD_LGUI, KC_F13)
 #define Flt0 _______
-#define Flt1 LT(_FUR, C(KC_Z))
+#define Flt1 _______
 #define Flt2 _______
-#define Frt0 _______
-#define Frt1 _______
-#define Frt2 _______
+#define Frt0 LT(_KOM, KC_F16)
+#define Frt1 LT(_SYM, KC_F17)
+#define Frt2 LT(_NAV, KC_F18)
 #define Flt3 _______
 #define Flt4 _______
 #define Flec _______
-#define FleP _______
+#define FleP QK_BOOT
 #define FleC _______
-#define Frec _______
-#define FreP QK_BOOT
-#define FreC _______
-// Fun Raised
-#define Gltp _______
-#define Gltr _______
-#define Gltm _______
-#define Glti _______
-#define Gltn _______
-#define Grtn _______
-#define Grti _______
-#define Grtm _______
-#define Grtr _______
-#define Grtp _______
-#define Glmp TD_GLMP
-#define Glmr TD_GLMR
-#define Glmm TD_GLMM
-#define Glmi TD_GLMI
-#define Glmn _______
-#define Grmn _______
-#define Grmi TD_GRMI
-#define Grmm TD_GRMM
-#define Grmr TD_GRMR
-#define Grmp TD_GRMP
-#define Glbp _______
-#define Glbr _______
-#define Glbm _______
-#define Glbi _______
-#define Glbn _______
-#define Grbn _______
-#define Grbi _______
-#define Grbm _______
-#define Grbr _______
-#define Grbp _______
-#define Glt0 _______
-#define Glt1 _______
-#define Glt2 _______
-#define Grt0 _______
-#define Grt1 _______
-#define Grt2 _______
-#define Glt3 _______
-#define Glt4 _______
-#define Glec _______
-#define GleP _______
-#define GleC _______
-#define Grec _______
-#define GreP _______
-#define GreC _______
-// Qwerty
-#define Qltp KC_Q
-#define Qltr KC_W
-#define Qltm KC_E
-#define Qlti KC_R
-#define Qltn KC_T
-#define Qrtn KC_Y
-#define Qrti KC_U
-#define Qrtm KC_I
-#define Qrtr KC_O
-#define Qrtp KC_P
-#define Qlmp TD_QLMP
-#define Qlmr TD_QLMR
-#define Qlmm TD_QLMM
-#define Qlmi TD_QLMI
-#define Qlmn KC_G
-#define Qrmn KC_H
-#define Qrmi TD_QRMI
-#define Qrmm TD_QRMM
-#define Qrmr TD_QRMR
-#define Qrmp TD_QRMP
-#define Qlbp KC_Z
-#define Qlbr KC_X
-#define Qlbm KC_C
-#define Qlbi KC_V
-#define Qlbn KC_B
-#define Qrbn KC_N
-#define Qrbi KC_M
-#define Qrbm KC_COMM
-#define Qrbr KC_DOT
-#define Qrbp KC_SLSH
-#define Qlt0 _______
-#define Qlt1 _______
-#define Qlt2 _______
-#define Qrt0 _______
-#define Qrt1 _______
-#define Qrt2 _______
-#define Qlt3 _______
-#define Qlt4 _______
-#define Qlec _______
-#define QleP _______
-#define QleC _______
-#define Qrec _______
-#define QreP _______
-#define QreC _______
+#define Frec C(A(G(KC_DOT)))
+#define FreP C(A(G(KC_M)))
+#define FreC C(A(G(KC_COMM)))
+// Nav
+#define Vltp KC_F19
+#define Vltr KC_F20
+#define Vltm KC_F21
+#define Vlti KC_F22
+#define Vltn KC_F23
+#define Vrtn KC_F12
+#define Vrti KC_F7
+#define Vrtm KC_F8
+#define Vrtr KC_F9
+#define Vrtp KC_F15
+#define Vlmp KC_LEFT
+#define Vlmr KC_DOWN
+#define Vlmm KC_UP
+#define Vlmi KC_RIGHT
+#define Vlmn KC_F24
+#define Vrmn KC_F11
+#define Vrmi KC_F4
+#define Vrmm KC_F5
+#define Vrmr KC_F6
+#define Vrmp KC_F14
+#define Vlbp MT(MOD_LGUI, KC_HOME)
+#define Vlbr MT(MOD_LALT, KC_PGDN)
+#define Vlbm MT(MOD_LSFT, KC_PGUP)
+#define Vlbi MT(MOD_LCTL, KC_END)
+#define Vlbn KC_INS
+#define Vrbn KC_F10
+#define Vrbi MT(MOD_LCTL, KC_F1)
+#define Vrbm MT(MOD_LSFT, KC_F2)
+#define Vrbr MT(MOD_LALT, KC_F3)
+#define Vrbp MT(MOD_LGUI, KC_F13)
+#define Vlt0 LT(_FUN, KC_SPC)
+#define Vlt1 LT(_NUM, KC_ENT)
+#define Vlt2 KC_TAB
+#define Vrt0 _______
+#define Vrt1 _______
+#define Vrt2 _______
+#define Vlt3 KC_ESC
+#define Vlt4 KC_NO
+#define Vlec C(G(KC_LEFT))
+#define VleP C(G(KC_D))
+#define VleC C(G(KC_RIGHT))
+#define Vrec _______
+#define VreP QK_BOOT
+#define VreC _______
 
 // KEYMAPS
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -693,32 +419,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			      Mlt3 , Mlt4
 	),
 
-	[_SYM] = LAYOUT_split_3x5_3(
-			 // ┌──00──┬──01──┬──02──┬──03──┬──04──┐                           ┌──05──┬──06──┬──07──┬──08──┬──09──┐
-			      Sltp , Sltr , Sltm , Slti , Sltn ,                             Srtn , Srti , Srtm , Srtr , Srtp ,
-			 // ├──10──┼──11──┼──12──┼──13──┼──14──┼──15──┤             ├──16──┼──17──┼──18──┼──19──┼──20──┼──21──┤
-			      Slmp , Slmr , Slmm , Slmi , Slmn , SleP ,               SreP , Srmn , Srmi , Srmm , Srmr , Srmp ,
-			 // ├──22──┼──23──┼──24──┼──25──┼──26──┤                           ├──27──┼──28──┼──29──┼──30──┼──31──┤
-			      Slbp , Slbr , Slbm , Slbi , Slbn ,                             Srbn , Srbi , Srbm , Srbr , Srbp ,
-			 // ├──32──┼──33──┼──34──┤                                                       ├──35──┼──36──┼──37──┤
-			      Slt0 , Slt1 , Slt2 ,                                                         Srt0 , Srt1 , Srt2 ,
-			 // └──38──┴──39──┘                                                                     ┘
-			      Slt3 , Slt4
-	),
-
-	[_SYR] = LAYOUT_split_3x5_3(
-			 // ┌──00──┬──01──┬──02──┬──03──┬──04──┐                           ┌──05──┬──06──┬──07──┬──08──┬──09──┐
-			      Tltp , Tltr , Tltm , Tlti , Tltn ,                             Trtn , Trti , Trtm , Trtr , Trtp ,
-			 // ├──10──┼──11──┼──12──┼──13──┼──14──┼──15──┤             ├──16──┼──17──┼──18──┼──19──┼──20──┼──21──┤
-			      Tlmp , Tlmr , Tlmm , Tlmi , Tlmn , TleP ,               TreP , Trmn , Trmi , Trmm , Trmr , Trmp ,
-			 // ├──22──┼──23──┼──24──┼──25──┼──26──┤                           ├──27──┼──28──┼──29──┼──30──┼──31──┤
-			      Tlbp , Tlbr , Tlbm , Tlbi , Tlbn ,                             Trbn , Trbi , Trbm , Trbr , Trbp ,
-			 // ├──32──┼──33──┼──34──┤                                                       ├──35──┼──36──┼──37──┤
-			      Tlt0 , Tlt1 , Tlt2 ,                                                         Trt0 , Trt1 , Trt2 ,
-			 // └──38──┴──39──┘                                                                     ┘
-			      Tlt3 , Tlt4
-	),
-
 	[_NUM] = LAYOUT_split_3x5_3(
 			 // ┌──00──┬──01──┬──02──┬──03──┬──04──┐                           ┌──05──┬──06──┬──07──┬──08──┬──09──┐
 			      Nltp , Nltr , Nltm , Nlti , Nltn ,                             Nrtn , Nrti , Nrtm , Nrtr , Nrtp ,
@@ -732,56 +432,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			      Nlt3 , Nlt4
 	),
 
-	[_NAV] = LAYOUT_split_3x5_3(
+	[_SYM] = LAYOUT_split_3x5_3(
 			 // ┌──00──┬──01──┬──02──┬──03──┬──04──┐                           ┌──05──┬──06──┬──07──┬──08──┬──09──┐
-			      Vltp , Vltr , Vltm , Vlti , Vltn ,                             Vrtn , Vrti , Vrtm , Vrtr , Vrtp ,
+			      Sltp , Sltr , Sltm , Slti , Sltn ,                             Srtn , Srti , Srtm , Srtr , Srtp ,
 			 // ├──10──┼──11──┼──12──┼──13──┼──14──┼──15──┤             ├──16──┼──17──┼──18──┼──19──┼──20──┼──21──┤
-			      Vlmp , Vlmr , Vlmm , Vlmi , Vlmn , VleP ,               VreP , Vrmn , Vrmi , Vrmm , Vrmr , Vrmp ,
+			      Slmp , Slmr , Slmm , Slmi , Slmn , SleP ,               SreP , Srmn , Srmi , Srmm , Srmr , Srmp ,
 			 // ├──22──┼──23──┼──24──┼──25──┼──26──┤                           ├──27──┼──28──┼──29──┼──30──┼──31──┤
-			      Vlbp , Vlbr , Vlbm , Vlbi , Vlbn ,                             Vrbn , Vrbi , Vrbm , Vrbr , Vrbp ,
+			      Slbp , Slbr , Slbm , Slbi , Slbn ,                             Srbn , Srbi , Srbm , Srbr , Srbp ,
 			 // ├──32──┼──33──┼──34──┤                                                       ├──35──┼──36──┼──37──┤
-			      Vlt0 , Vlt1 , Vlt2 ,                                                         Vrt0 , Vrt1 , Vrt2 ,
+			      Slt0 , Slt1 , Slt2 ,                                                         Srt0 , Srt1 , Srt2 ,
 			 // └──38──┴──39──┘                                                                     ┘
-			      Vlt3 , Vlt4
+			      Slt3 , Slt4
 	),
 
-	[_NAI] = LAYOUT_split_3x5_3(
+	[_KOM] = LAYOUT_split_3x5_3(
 			 // ┌──00──┬──01──┬──02──┬──03──┬──04──┐                           ┌──05──┬──06──┬──07──┬──08──┬──09──┐
-			      Iltp , Iltr , Iltm , Ilti , Iltn ,                             Irtn , Irti , Irtm , Irtr , Irtp ,
+			      Kltp , Kltr , Kltm , Klti , Kltn ,                             Krtn , Krti , Krtm , Krtr , Krtp ,
 			 // ├──10──┼──11──┼──12──┼──13──┼──14──┼──15──┤             ├──16──┼──17──┼──18──┼──19──┼──20──┼──21──┤
-			      Ilmp , Ilmr , Ilmm , Ilmi , Ilmn , IleP ,               IreP , Irmn , Irmi , Irmm , Irmr , Irmp ,
+			      Klmp , Klmr , Klmm , Klmi , Klmn , KleP ,               KreP , Krmn , Krmi , Krmm , Krmr , Krmp ,
 			 // ├──22──┼──23──┼──24──┼──25──┼──26──┤                           ├──27──┼──28──┼──29──┼──30──┼──31──┤
-			      Ilbp , Ilbr , Ilbm , Ilbi , Ilbn ,                             Irbn , Irbi , Irbm , Irbr , Irbp ,
+			      Klbp , Klbr , Klbm , Klbi , Klbn ,                             Krbn , Krbi , Krbm , Krbr , Krbp ,
 			 // ├──32──┼──33──┼──34──┤                                                       ├──35──┼──36──┼──37──┤
-			      Ilt0 , Ilt1 , Ilt2 ,                                                         Irt0 , Irt1 , Irt2 ,
+			      Klt0 , Klt1 , Klt2 ,                                                         Krt0 , Krt1 , Krt2 ,
 			 // └──38──┴──39──┘                                                                     ┘
-			      Ilt3 , Ilt4
-	),
-
-	[_NAR] = LAYOUT_split_3x5_3(
-			 // ┌──00──┬──01──┬──02──┬──03──┬──04──┐                           ┌──05──┬──06──┬──07──┬──08──┬──09──┐
-			      Wltp , Wltr , Wltm , Wlti , Wltn ,                             Wrtn , Wrti , Wrtm , Wrtr , Wrtp ,
-			 // ├──10──┼──11──┼──12──┼──13──┼──14──┼──15──┤             ├──16──┼──17──┼──18──┼──19──┼──20──┼──21──┤
-			      Wlmp , Wlmr , Wlmm , Wlmi , Wlmn , WleP ,               WreP , Wrmn , Wrmi , Wrmm , Wrmr , Wrmp ,
-			 // ├──22──┼──23──┼──24──┼──25──┼──26──┤                           ├──27──┼──28──┼──29──┼──30──┼──31──┤
-			      Wlbp , Wlbr , Wlbm , Wlbi , Wlbn ,                             Wrbn , Wrbi , Wrbm , Wrbr , Wrbp ,
-			 // ├──32──┼──33──┼──34──┤                                                       ├──35──┼──36──┼──37──┤
-			      Wlt0 , Wlt1 , Wlt2 ,                                                         Wrt0 , Wrt1 , Wrt2 ,
-			 // └──38──┴──39──┘                                                                     ┘
-			      Wlt3 , Wlt4
-	),
-
-	[_NAS] = LAYOUT_split_3x5_3(
-			 // ┌──00──┬──01──┬──02──┬──03──┬──04──┐                           ┌──05──┬──06──┬──07──┬──08──┬──09──┐
-			      Jltp , Jltr , Jltm , Jlti , Jltn ,                             Jrtn , Jrti , Jrtm , Jrtr , Jrtp ,
-			 // ├──10──┼──11──┼──12──┼──13──┼──14──┼──15──┤             ├──16──┼──17──┼──18──┼──19──┼──20──┼──21──┤
-			      Jlmp , Jlmr , Jlmm , Jlmi , Jlmn , JleP ,               JreP , Jrmn , Jrmi , Jrmm , Jrmr , Jrmp ,
-			 // ├──22──┼──23──┼──24──┼──25──┼──26──┤                           ├──27──┼──28──┼──29──┼──30──┼──31──┤
-			      Jlbp , Jlbr , Jlbm , Jlbi , Jlbn ,                             Jrbn , Jrbi , Jrbm , Jrbr , Jrbp ,
-			 // ├──32──┼──33──┼──34──┤                                                       ├──35──┼──36──┼──37──┤
-			      Jlt0 , Jlt1 , Jlt2 ,                                                         Jrt0 , Jrt1 , Jrt2 ,
-			 // └──38──┴──39──┘                                                                     ┘
-			      Jlt3 , Jlt4
+			      Klt3 , Klt4
 	),
 
 	[_FUN] = LAYOUT_split_3x5_3(
@@ -797,18 +471,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			      Flt3 , Flt4
 	),
 
-	[_FUR] = LAYOUT_split_3x5_3(
+	[_NAV] = LAYOUT_split_3x5_3(
 			 // ┌──00──┬──01──┬──02──┬──03──┬──04──┐                           ┌──05──┬──06──┬──07──┬──08──┬──09──┐
-			      Gltp , Gltr , Gltm , Glti , Gltn ,                             Grtn , Grti , Grtm , Grtr , Grtp ,
+			      Vltp , Vltr , Vltm , Vlti , Vltn ,                             Vrtn , Vrti , Vrtm , Vrtr , Vrtp ,
 			 // ├──10──┼──11──┼──12──┼──13──┼──14──┼──15──┤             ├──16──┼──17──┼──18──┼──19──┼──20──┼──21──┤
-			      Glmp , Glmr , Glmm , Glmi , Glmn , GleP ,               GreP , Grmn , Grmi , Grmm , Grmr , Grmp ,
+			      Vlmp , Vlmr , Vlmm , Vlmi , Vlmn , VleP ,               VreP , Vrmn , Vrmi , Vrmm , Vrmr , Vrmp ,
 			 // ├──22──┼──23──┼──24──┼──25──┼──26──┤                           ├──27──┼──28──┼──29──┼──30──┼──31──┤
-			      Glbp , Glbr , Glbm , Glbi , Glbn ,                             Grbn , Grbi , Grbm , Grbr , Grbp ,
+			      Vlbp , Vlbr , Vlbm , Vlbi , Vlbn ,                             Vrbn , Vrbi , Vrbm , Vrbr , Vrbp ,
 			 // ├──32──┼──33──┼──34──┤                                                       ├──35──┼──36──┼──37──┤
-			      Glt0 , Glt1 , Glt2 ,                                                         Grt0 , Grt1 , Grt2 ,
+			      Vlt0 , Vlt1 , Vlt2 ,                                                         Vrt0 , Vrt1 , Vrt2 ,
 			 // └──38──┴──39──┘                                                                     ┘
-			      Glt3 , Glt4
-	),
+			      Vlt3 , Vlt4
+	)
 };
 
 #ifdef POINTING_DEVICE_COMBINED
@@ -871,6 +545,8 @@ bool process_adaptive_key(uint16_t *calling_keycode, const keyrecord_t *record) 
         unregister_mods(MOD_MASK_SHIFT);  //CAPS_WORD/LOCK won't be affected.
     } // may want more granular control than this…
 
+
+
     switch (keycode & QK_BASIC_MAX) { // process ignoring multi-function keys
 		case KC_E:
 			switch (prior_keycode) {
@@ -880,7 +556,7 @@ bool process_adaptive_key(uint16_t *calling_keycode, const keyrecord_t *record) 
 					break;
 			}
 			break;
-		case MAGIC:
+		case KC_DEL:
 			switch (prior_keycode) {
 				case KC_A:
 					tap_code16(KC_Y);
@@ -1109,23 +785,6 @@ bool process_adaptive_key(uint16_t *calling_keycode, const keyrecord_t *record) 
 					break;
 			}
 			break;
-        case KC_F:
-            switch (prior_keycode) {
-                case KC_C:
-                    tap_code16(KC_K);
-                    return_state = false;
-                    break;
-            }
-        case KC_C:
-            switch (prior_keycode) {
-                case KC_F:
-                tap_code(KC_BSPC);
-                    tap_code16(KC_K);
-                    tap_code16(KC_E);
-                    return_state = false;
-                    break;
-            }
-            break;
         case KC_SLSH:
             switch (prior_keycode) {
                 case TD(8):
@@ -1148,7 +807,10 @@ bool process_adaptive_key(uint16_t *calling_keycode, const keyrecord_t *record) 
     }
     printf("Prior: %d, Current: %d, Return: %d\n", prior_keycode, keycode, return_state);
     if (return_state) { // no adaptive processed, cancel state and pass it on.
+        prior_keycode = keycode;
         set_mods(saved_mods);
+    } else {
+        prior_keycode = KC_NO;
     }
     return return_state;
 }
@@ -1156,13 +818,10 @@ bool process_adaptive_key(uint16_t *calling_keycode, const keyrecord_t *record) 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Adaptive Keys
     if (!process_adaptive_key(&keycode, record)) {
-        // If an adaptive key was processed, we're done.
-        prior_keycode = KC_NO;
         return false;
-    } else {
-        // If not, we need to store the base keycode for the next keypress.
-        prior_keycode = keycode & QK_BASIC_MAX;
     }
+    // static uint16_t mod_lcbr_timer;
+    // static uint16_t mod_lpar_timer;
     switch (keycode) {
         #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
         case WYLD_AUTO_MS_TOG:
@@ -1171,6 +830,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false; // Skip all further processing of this key
         #endif
+        // case MOD_LCBR:
+        //     if (record->event.pressed) {
+        //         mod_lcbr_timer = timer_read();
+        //         print("MOD_LCBR pressed\n");
+        //         register_code(KC_LSFT);
+        //     } else {
+        //         unregister_code(KC_LSFT);
+        //         if (timer_elapsed(mod_lcbr_timer) < TAPPING_TERM) {
+        //             SEND_STRING("{");
+        //             print("Sent string {\n");
+        //         }
+        //     }
+        //     return false;
+        // case MOD_LPAR:
+        //     if (record->event.pressed) {
+        //         mod_lpar_timer = timer_read();
+        //         print("MOD_LPAR pressed\n");
+        //         register_code(KC_LCTL);
+        //     } else {
+        //         unregister_code(KC_LCTL);
+        //         if (timer_elapsed(mod_lpar_timer) < TAPPING_TERM) {
+        //             SEND_STRING("(");
+        //             print("Sent string (\n");
+        //         }
+        //     }
+        //     return false;
     }
     return true;
 }

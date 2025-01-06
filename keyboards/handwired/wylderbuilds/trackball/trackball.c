@@ -214,6 +214,7 @@ static void pointing_device_task_charybdis(report_mouse_t* mouse_report) {
     static int16_t scroll_buffer_y = 0;
     // print("In pointing_device_task_charybdis\n");
     if (g_charybdis_config.is_dragscroll_enabled) {
+        // printf("Dragscroll enabled. Mouse report: %d, %d\n", mouse_report->x, mouse_report->y);
 #    ifdef CHARYBDIS_DRAGSCROLL_REVERSE_X
         scroll_buffer_x -= mouse_report->x;
 #    else
@@ -227,10 +228,12 @@ static void pointing_device_task_charybdis(report_mouse_t* mouse_report) {
         mouse_report->x = 0;
         mouse_report->y = 0;
         if (abs(scroll_buffer_x) > CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
+            printf("Passed that buffer! (X) %d\n", scroll_buffer_x);
             mouse_report->h = scroll_buffer_x > 0 ? 1 : -1;
             scroll_buffer_x = 0;
         }
         if (abs(scroll_buffer_y) > CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
+            printf("Passed that buffer! (Y) %d\n", scroll_buffer_y);
             mouse_report->v = scroll_buffer_y > 0 ? 1 : -1;
             scroll_buffer_y = 0;
         }
